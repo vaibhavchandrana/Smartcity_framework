@@ -1,25 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import React from 'react'
+import Header from "./Component/Header"
+// import Home from "./components/Home"
+import Login from './Component/Login';
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import UserProfile from './Component/UserProfile';
+import "./App.css"
+import 'flowbite';
+import Dashboard from './Component/EmployeeComponent/Dashboard';
+import Home from './Component/Home';
+import { AddHome } from './Component/EmployeeComponent/AddHome';
+import SeeElectricityTransactions from './Component/SeeElectricityTransactions';
+import SeeWaterTransactions from './Component/SeeWaterTransactions';
+import AddSociety from './Component/EmployeeComponent/AddSociety';
+import AddElectricityTransaction from './Component/EmployeeComponent/AddElectricityTransaction';
+import AddWaterTransaction from './Component/EmployeeComponent/AddWaterTransaction';
+import UserList from './Component/EmployeeComponent/UserList';
+import Profile from './Component/EmployeeComponent/Profile';
+import UserLogin from './Component/UserLogin';
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path='/login' element={<Login />} />
+          <Route path='/dashboard' element={<Dashboard />} />
+          <Route path='/' element={<Home />} />
+          <Route path='/user_profile' element={<UserProfile />} />
+          <Route path='/addHome' element={<AddHome />} />
+          <Route path='/addSociety' element={<AddSociety />} />
+          <Route path='/see_water_transaction' element={<SeeWaterTransactions />} />
+          <Route path='/see_electricity_transaction' element={<SeeElectricityTransactions />} />
+          <Route path='/add_electricity_transaction' element={<AddElectricityTransaction />} />
+          <Route path='/add_water_transaction' element={<AddWaterTransaction />} />
+          <Route path='/see_electricity_transaction' element={<SeeElectricityTransactions />} />
+          <Route path='/user_list' element={<UserList />} />
+          <Route path='/profile' element={<Profile />} />
+          <Route path='/user_login' element={<UserLogin />} />
+        </Routes>
+      </BrowserRouter>
+    </>
+  )
 }
 
-export default App;
+export default App

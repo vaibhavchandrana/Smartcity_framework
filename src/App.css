@@ -1,38 +1,268 @@
-.App {
-  text-align: center;
-}
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+#two {
+  width: 92%;
+  height: 500px;
+  /* border: 0.1px solid rgb(106, 106, 106);  */
+  margin: auto;
+  padding: 2%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 5%;
+  background-image: linear-gradient(145deg, rgb(255, 255, 255) 30%, rgb(174, 234, 253));
+  margin-bottom: 5%;
 }
 
-.App-link {
-  color: #61dafb;
+#two>div {
+  /* border: 1px solid red; */
+  width: 25%;
+  height: 450px;
+  margin: auto;
+  align-self: center;
+  text-align: center;
+  color: rgb(65, 7, 7);
+  font-family: AvertaStd, -apple-system, BlinkMacSystemFont, sans-serif;
+  ;
+  border-color: rgba(161, 161, 161, 0.4);
+  border-style: solid;
+  border-width: 0px 0px 0px 2px;
+  padding-left: 6%;
+
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+#two>div>div>h1 {
+  color: rgb(41, 35, 35);
+  font-size: 1.7em;
+  font-weight: 700;
+}
+
+#two>div>div>p {
+  color: rgb(78, 78, 78);
+  letter-spacing: 0.05em;
+  font-size: 1em;
+}
+
+#two>div>div>img {
+  width: 290px;
+  height: 250px;
+  margin-left: auto;
+  filter: drop-shadow(2px 5px 2px rgba(32, 32, 33, 0.2));
+
+
+}
+
+
+#two:hover {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+/* ================================================== */
+
+
+
+/* =============section three============= */
+
+.txt {
+
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  letter-spacing: 0.08em;
+}
+
+#three {
+  background-color: rgb(253, 244, 253);
+  /* color: white; */
+}
+
+.two-img:hover {
+
+  transform: scale(1.05);
+  transition: all 0.2s ease-in;
+}
+
+@media (max-width:1000px)
+{
+  #two {
+    display: block;
+    height: auto;
+
   }
-  to {
-    transform: rotate(360deg);
+  #two>div {
+    /* border: 1px solid red; */
+    width: 90%;
+    height: 450px;
+    margin: auto;
+    align-self: center;
+    text-align: center;
+    color: rgb(65, 7, 7);
+    font-family: AvertaStd, -apple-system, BlinkMacSystemFont, sans-serif;
+    border-color: rgba(161, 161, 161, 0.4);
+    border-style: solid;
+    border-width: 0px 0px 2px 0px;
+    padding-left: 2%;
+    margin-bottom: 50px;
+  
+  }
+  #two>div>div>img {
+    width: 290px;
+    height: 250px;
+    margin: auto;
+    filter: drop-shadow(2px 5px 2px rgba(32, 32, 33, 0.2));
+  
+  
+  }
+}
+.profile-card {
+  margin-top: 4vh;
+  border: 1px solid white;
+  border-radius: 15px;
+  width: 35vw;
+  height: auto;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  box-shadow: 0 15px 35px rgba(104, 100, 100, 0.5);
+  color: black;
+  z-index: 1;
+}
+
+#img2 {
+  margin-top: 4%;
+  width: 20vw;
+  background-color: white;
+  border-radius: 5px;
+}
+
+#img3 {
+  width: 80%;
+  height: 50px;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.ring1 {
+  border: 50px solid rgb(255, 131, 42);
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  position: absolute;
+  margin-left: 34%;
+  margin-top: -60px;
+  backdrop-filter: blur(100px);
+  z-index: -3;
+}
+
+.ring2 {
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(158, 78, 249) rgb(106, 7, 234) rgb(72, 207, 237);
+  background-image: linear-gradient(120deg, rgb(98, 210, 250), rgb(76, 234, 192), white);
+  border-radius: 50%;
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  margin-top: -250px;
+  margin-left: 49%;
+  z-index: -3;
+}
+
+.form {
+  letter-spacing: 2px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: black;
+}
+
+.pf_detail {
+  margin-left: 0%;
+}
+
+@media (max-width: 998px) {
+  html {
+    font-size: 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 40%;
+  }
+}
+
+@media (max-width: 650px) {
+  html {
+    font-size: 35%;
+  }
+}
+
+@media (max-width: 400px) {
+  html {
+    font-size: 40%;
+  }
+  .profile-card {
+    margin-top: 10vh;
+    border: 1px solid white;
+    border-radius: 15px;
+    width: 80vw;
+    height: auto;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    color: black;
+    z-index: 1;
+  }
+
+  .profile-card>p {
+    text-align: center;
+    color: black;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 2rem;
+    line-height: 60%;
+    font-weight: bold;
+  }
+
+  .ring1 {
+    border: 50px solid rgb(255, 131, 42);
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    position: absolute;
+    margin-left: 34%;
+    margin-top: -60px;
+    backdrop-filter: blur(100px);
+    z-index: -3;
+  }
+
+  .ring2 {
+    width: 150px;
+    height: 150px;
+  }
+
+  .profile-card>center>.img1 {
+    width: 8vw;
+    height: 5vh;
+    margin-top: 5%;
+  }
+
+  #img2 {
+    margin-top: 5%;
+    width: 40vw;
+  }
+
+  #img3 {
+    width: 50%;
+    height: 35px;
+    background-color: rgba(255, 255, 255, 0.9);
+  }
+
+  .form {
+    letter-spacing: 0px;
+    font-size: 2rem;
+    font-weight: 600;
+    color: black;
+    margin-left: 5vw;
   }
 }
