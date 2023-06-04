@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import api from "../api"
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 import logo from "../Images/logo.png"
 import ChangePassword from './ChangePassword';
 import { ThreeDots } from 'react-loader-spinner';
@@ -23,11 +23,6 @@ const UserLogin = () => {
 
 
 
-  const [newPassword, setNewPassword] = useState("");
-  const onSetPasswordChange = (e) => {
-    setNewPassword(e.target.value);
-  }
-
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -40,14 +35,19 @@ const UserLogin = () => {
     await axios.post(`${api}/auth/user/login`, userLoginObj).then((res) => {
       if (res.status === 200) {
         toast.success("You have successfully loged in");
+        localStorage.setItem("profile", JSON.stringify(res.data));
+        navigate('/')
       }
-      localStorage.setItem("profile", JSON.stringify(res.data));
-      navigate('/')
+      else{
+        toast.error("Unable to login !, Please enter right credentials")
+
+      }
+
     }).catch((err) => {
-      toast.error("Something Went wrong")
+      toast.error("Unable to login !, Please enter right credentials")
       console.log(err);
     })
-    setShow(true);
+    setShow(false);
 
 
 
@@ -63,7 +63,6 @@ const UserLogin = () => {
             <img className="w-14 h-14 mr-2" src={logo} alt="logo" />
             Smart City App
           </a>
-          <Toaster position='right-end'/>
 
           <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
             <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
@@ -83,13 +82,14 @@ const UserLogin = () => {
                 <div className="flex items-center justify-end">
                   <button type='button' data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500">Change password</button>
                 </div>
-                {show?
-                <button className="w-full text-white items-center bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"><ThreeDots className="ml-20" height="30"
-                  width="30"
-                  radius="9"
-                  color="white"
-                ></ThreeDots></button>:
-                <button type="submit" className="w-full text-white -center bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"> Sign in</button>}
+                {show?<button className="w-full text-white items-center bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                    <div className='ml-32'>
+                      <center><ThreeDots className="ml-20" height="30"
+                    width="40"
+                    radius="4"
+                    color="white"
+                  ></ThreeDots></center></div></button> :
+                  <button type="submit" className="w-full text-white -center bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"> Sign in</button>}
                 <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                   Login as an Employee ? <Link to="/login" className="font-medium text-primary-600 hover:underline dark:text-primary-500">Employee Login</Link>
                 </p>

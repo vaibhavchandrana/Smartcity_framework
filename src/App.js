@@ -17,11 +17,15 @@ import AddWaterTransaction from './Component/EmployeeComponent/AddWaterTransacti
 import UserList from './Component/EmployeeComponent/UserList';
 import Profile from './Component/EmployeeComponent/Profile';
 import UserLogin from './Component/UserLogin';
+import { Toaster } from 'react-hot-toast';
+import Logout from './Component/Logout';
 const App = () => {
   return (
     <>
       <BrowserRouter>
         <Header />
+        <Toaster position='top-center'/>
+
         <Routes>
           <Route path='/login' element={<Login />} />
           <Route path='/dashboard' element={<Dashboard />} />
@@ -37,6 +41,7 @@ const App = () => {
           <Route path='/user_list' element={<UserList />} />
           <Route path='/profile' element={<Profile />} />
           <Route path='/user_login' element={<UserLogin />} />
+          <Route path='/logout' element={<Logout />} />
         </Routes>
       </BrowserRouter>
     </>

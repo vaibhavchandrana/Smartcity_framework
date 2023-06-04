@@ -1,9 +1,29 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import AddHomeDetail from './AddHomeDetail';
 import AddElectricityDetail from './AddElectricityDetail';
 import AddWaterDetails from './AddWaterDetails';
+import { Link, useNavigate } from 'react-router-dom';
+
 export const AddHome = () => {
+  var navigate = useNavigate()
     const [state, setState] = useState(1);
+    var profile=JSON.parse(localStorage.getItem('profile'))
+   
+    useEffect(()=>{
+      if(profile){
+        if(profile.employee===true)
+        {
+          setState(1);
+        }
+        else{
+          navigate('/login')
+      }
+    }
+      else{
+      navigate('/login')
+    }
+    },[])
+  
     const stateHandler = (x) => {
       setState(x);
       console.log(x)

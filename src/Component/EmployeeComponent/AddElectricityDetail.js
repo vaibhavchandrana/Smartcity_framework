@@ -43,7 +43,7 @@ const AddElectricityDetail = () => {
     const submitHandler = (e) => {
         e.preventDefault();
         if (!validation()) {
-            alert("Please Enter correct details");
+            toast.error("Please Enter correct details");
             return false;
         }
         else {
@@ -60,10 +60,10 @@ const AddElectricityDetail = () => {
         };
 
         axios.post(`${api}/employee/add/details/electricity`, electricityDetailsObj).then((res) => {
-            alert("Added");
-        }).catch((err) => {
-            alert(err);
-        })
+            toast.success("Detials Added")
+          }).catch((err) => {
+            toast.error("Unable to add details")
+          })
 
     }
 

@@ -3,52 +3,65 @@ import axios from "axios";
 import api from '../../api';
 import { toast, Toaster } from 'react-hot-toast'
 import UserTable from './UserTable';
+import { ThreeCircles } from 'react-loader-spinner';
+import { useNavigate } from 'react-router-dom';
 const UserList = () => {
   const statesOfIndia = [
     "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jammu and Kashmir", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana", "Tripura", "Uttar Pradesh", "Uttarakhand", "West Bengal"
   ];
-  const [houseno, setHouseNo] = useState("");
-  const [BillNumber, setBillNumber] = useState("");
-  const [paymentmethod, setPaymentMethod] = useState("");
-  const [amount, setAmount] = useState("");
-  const [date, setDate] = useState("");
-  const [time, setTime] = useState("");
   const [state, setState] = useState("");
   const [societynumber, setSocietyNumber] = useState("");
   const [city, setCity] = useState("");
   const [allCity, setAllCity] = useState([]);
   const [allsocieties, setAllScocities] = useState([])
   const [users, setUser] = useState([])
-  const [searchString,setsearchString]=useState("")
-
+  const [searchString, setsearchString] = useState("")
+  const [show, setShow] = useState(false)
+  var navigate=useNavigate()
   useEffect(() => {
     async function getAllSociety() {
+      setShow(true)
       await axios.get(`${api}/employee/get/societies/all`).then((res) =>
         setAllScocities(res.data)).catch((err) => {
           console.log("error is ", err)
         })
+        setShow(false)
+
     }
     async function getAllUserList() {
+      setShow(true)
+
       await axios.get(`${api}/employee/get/homes/all`).then((res) =>
         setUser(res.data)).catch((err) => {
           console.log("error is ", err)
         })
+        setShow(false)
+
     }
     getAllSociety()
     getAllUserList();
   }, [])
+
   useEffect(() => {
-    async function getAllCities() {
-      await axios.get(`http://localhost:8080/employee/get/cities/${state}`).then((res) =>
+    async function getAllCities() {  
+          setShow(true)
+
+      await axios.get(`${api}/employee/get/cities/${state}`).then((res) =>
         setAllCity(res.data)).catch((err) => {
           console.log("error is ", err)
         })
+        setShow(false)
+
     }
     async function getAllUserUnderState() {
-      await axios.get(`http://localhost:8080/employee/get/homes/state/${state}`).then((res) =>
+      setShow(true)
+
+      await axios.get(`${api}/employee/get/homes/state/${state}`).then((res) =>
         setUser(res.data)).catch((err) => {
           console.log("error is ", err)
         })
+        setShow(false)
+
     }
     if (state) {
       // getAllUserUnderState()
@@ -57,14 +70,18 @@ const UserList = () => {
   }, [state])
 
   useEffect(() => {
+    
     async function getAllSocietiesInsideCity() {
-      await axios.get(`http://localhost:8080/employee/get/societies/city/${city}`).then((res) =>
+      setShow(true)
+      await axios.get(`${api}/employee/get/societies/city/${city}`).then((res) =>
         setAllScocities(res.data)).catch((err) => {
           console.log("error is ", err)
         })
+        setShow(false)
+
     }
     async function getAllHomesInsideCity() {
-      await axios.get(`http://localhost:8080/employee/get/homes/city/${city}`).then((res) =>
+      await axios.get(`${api}/employee/get/homes/city/${city}`).then((res) =>
         setUser(res.data)).catch((err) => {
           console.log("error is ", err)
         })
@@ -78,10 +95,14 @@ const UserList = () => {
   useEffect(() => {
 
     async function getAllUser() {
-      await axios.get(`http://localhost:8080/employee/society/houses/${societynumber}`).then((res) =>
+              setShow(true)
+
+      await axios.get(`${api}/employee/society/houses/${societynumber}`).then((res) =>
         setUser(res.data)).catch((err) => {
           console.log("error is ", err)
         })
+        setShow(false)
+
     }
     if (societynumber) {
       getAllUser()
@@ -91,32 +112,40 @@ const UserList = () => {
 
   const onSocietyNumberChange = (e) => {
     setSocietyNumber(e.target.value);
-}
-async function getAllUserOnSearch() {
-  if(searchString.length>0){
-  await axios.get(`http://localhost:8080/employee/get/homes/search/${searchString}`).then((res) =>
-    setUser(res.data))
-    .catch((err) => {
-      console.log("error is ", err)
-    })
   }
-  else{
+  async function getAllUserOnSearch() {
+    if (searchString.length > 0) {
+      setShow(true)
+
+      await axios.get(`${api}/employee/get/homes/search/${searchString}`).then((res) =>
+        setUser(res.data))
+        .catch((err) => {
+          console.log("error is ", err)
+        })
+        setShow(false)
+
+    }
+    else {
+      setShow(true)
+
       await axios.get(`${api}/employee/get/homes/all`).then((res) =>
         setUser(res.data)).catch((err) => {
           console.log("error is ", err)
         })
-  }
-}
+        setShow(false)
 
-const onCityChange = (e) => {
+    }
+  }
+
+  const onCityChange = (e) => {
     setCity(e.target.value);
-}
-const onSearchStringChange = (e) => {
-  setsearchString(e.target.value);
-}
-const onStateChange = (e) => {
+  }
+  const onSearchStringChange = (e) => {
+    setsearchString(e.target.value);
+  }
+  const onStateChange = (e) => {
     setState(e.target.value);
-}
+  }
 
   return (
     <div>
@@ -176,7 +205,7 @@ const onStateChange = (e) => {
               </div>
             </div>
           </div>
-      <UserTable userList={users}/>
+          {show ? <div className='w-full mt-10 flex justify-center'><center><ThreeCircles color='black'></ThreeCircles></center></div> : <UserTable userList={users} />}
         </div>
       </section>
     </div>

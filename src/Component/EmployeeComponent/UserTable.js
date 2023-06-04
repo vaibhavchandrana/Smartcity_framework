@@ -1,7 +1,15 @@
 import React from 'react'
 import { AiFillEye } from 'react-icons/ai';
-
+import { useNavigate } from 'react-router-dom';
 const UserTable = (propTypes) => {
+    var navigate=useNavigate()
+function changeProfile(houseNo)
+  {
+ var profileObj=JSON.parse(localStorage.getItem('profile'));
+ profileObj.houseNo=houseNo
+ localStorage.setItem('profile',JSON.stringify(profileObj))
+ navigate('/user_profile')
+  }
     return (
         <div>
 
@@ -27,7 +35,7 @@ const UserTable = (propTypes) => {
                                     <td className="px-4 py-3">{item.society ? item.society.societyName : null}</td>
                                     <td className="px-4 py-3">{item.society ? item.society.city : null}</td>
                                     <td className="px-4 py-3 flex items-center justify-end">
-                                              <button type="button" onClick="" className="flex items-center justify-center px-4 py-2 text-xl font-medium text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"><AiFillEye></AiFillEye></button>
+                                              <button type="button"  onClick={() => changeProfile(item.houseNo)}  className="flex items-center justify-center px-4 py-2 text-xl font-medium text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"><AiFillEye></AiFillEye></button>
                                     </td>
 
                                 </tr>

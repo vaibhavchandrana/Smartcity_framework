@@ -38,11 +38,9 @@ const AddWaterDetails = () => {
     }
 
     axios.post(`${api}/employee/add/details/water`, waterDetailsObj).then((res) => {
-      console.log(res)
-      alert("Added")
+      toast.success("Detials Added")
     }).catch((err) => {
-      console.log(err);
-      alert("Not Added")
+      toast.error("Unable to add details")
     })
   }
 
@@ -71,7 +69,6 @@ const AddWaterDetails = () => {
 
   return (
     <section className="bg-white dark:bg-gray-900">
-    <Toaster position='top-right'/>
     <div className="py-2 px-4 mx-auto max-w-4xl lg:py-16">
       <h2 className="mb-4 text-xl font-bold text-gray-900 dark:text-white">Add Water Account Details</h2>
       <form onSubmit={submitHandler}>

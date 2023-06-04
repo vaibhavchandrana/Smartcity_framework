@@ -2,8 +2,11 @@ import React, { useState, useEffect } from 'react'
 import axios from "axios";
 import api from '../../api';
 import { toast, Toaster } from 'react-hot-toast'
+import { useNavigate } from 'react-router-dom'
 
 const AddElectricityTransaction = () => {
+    var navigate = useNavigate()
+
     const [houseno, setHouseNo] = useState("");
     const [BillNumber, setBillNumber] = useState("");
     const [paymentmethod, setPaymentMethod] = useState("");
@@ -18,7 +21,23 @@ const AddElectricityTransaction = () => {
     const [street, setStreet] = useState("");
     const [allsocieties, setAllScocities] = useState([])
     const [user, setUser] = useState([])
-
+    var profile=JSON.parse(localStorage.getItem('profile'))
+   
+    useEffect(()=>{
+      if(profile){
+        if(profile.employee===true)
+        {
+          setState(1);
+        }
+        else{
+          navigate('/login')
+      }
+    }
+      else{
+      navigate('/login')
+    }
+    },[])
+  
 
     useEffect(() => {
         async function getAllSociety() {
@@ -123,14 +142,17 @@ const AddElectricityTransaction = () => {
             time: time
         }
 
-        await axios.post(`${api}/employee/add/transaction/electricity`, transactionObj)
+        await axios.post(`${api}/employee/add/transaction/electricity`, transactionObj).then((res) => {
+            toast.success("Detials Added")
+          }).catch((err) => {
+            toast.error("Unable to add details")
+          })
 
     }
 
     return (
         <div className='mt-20'>
             <section className="bg-white dark:bg-gray-900">
-                <Toaster position='top-right' />
                 <div className="py-2 px-4 mx-auto max-w-4xl lg:py-16">
                     <h2 className="mb-4 text-xl font-bold text-gray-900 dark:text-white">Add Electricity Transaction</h2>
                     <form onSubmit={submitHandler}>
