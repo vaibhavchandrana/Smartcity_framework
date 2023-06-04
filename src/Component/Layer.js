@@ -2,7 +2,7 @@ import React from 'react'
 
 const Layer = () => {
   return (
-    <div className='ml-32 mr-32 text-justify'>
+    <div className='ml-8 mr-7 md:ml-32 md:mr-32 text-justify'>
         <center><h1 className='text-3xl font-bold mb-10'>How we secure your information</h1></center>
         
          <ol className="relative text-gray-500 border-l border-gray-200 dark:border-gray-700 dark:text-gray-400">                  
