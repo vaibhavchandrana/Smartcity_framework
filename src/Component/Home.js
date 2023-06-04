@@ -2,7 +2,7 @@ import React from 'react'
 import HomeCard from './HomeCard'
 import { Link } from 'react-router-dom'
 import Feature from './Feature'
-
+import Layer from './Layer'
 
 const Home = () => {
   
@@ -59,6 +59,7 @@ const Home = () => {
         </div>
       </div>
       <HomeCard />
+      <Layer/>
       <Feature />
     </div>
   )
