@@ -5,7 +5,7 @@ import Login from './Component/Login';
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import UserProfile from './Component/UserProfile';
 import "./App.css"
-import 'flowbite';
+// import 'flowbite';
 import Dashboard from './Component/EmployeeComponent/Dashboard';
 import Home from './Component/Home';
 import { AddHome } from './Component/EmployeeComponent/AddHome';
