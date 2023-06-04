@@ -3,7 +3,6 @@ import axios from 'axios'
 import api from "../../api"
 import { toast,Toaster } from 'react-hot-toast'
 import emailjs from '@emailjs/browser';
-import LoadingOverlay from 'react-loading-overlay';
 import { ThreeCircles } from 'react-loader-spinner';
 const AddHomeDetail = (propTypes) => {
   const [houseno, setHouseNo] = useState("");
@@ -169,12 +168,7 @@ const AddHomeDetail = (propTypes) => {
     <section className="bg-white dark:bg-gray-900">
       <div className="py-2 px-4 mx-auto max-w-4xl lg:py-16">
         <h2 className="mb-4 text-xl font-bold text-gray-900 dark:text-white">Add a new Home</h2>
-        <LoadingOverlay
-          active={loading}
-          spinner={<ThreeCircles color='black'/>}
-          text='Adding the details'
-        >
-        </LoadingOverlay>
+       
         <form onSubmit={submitHandler}>
           < div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
 
