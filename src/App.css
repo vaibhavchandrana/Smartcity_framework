@@ -266,3 +266,8 @@
     margin-left: 5vw;
   }
 }
+@media (max-width: 767px) {
+  body {
+    zoom: 1.7;
+  }
+}
