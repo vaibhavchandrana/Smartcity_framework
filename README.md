@@ -28,20 +28,6 @@ The project utilizes the following technologies:
 - Cloud Integration: Integration with a reliable and resilient cloud database infrastructure
 - User Interface: Modern UI design using React and Tailwind CSS
 
-## Installation and Usage
-
-1. Clone the repository: `git clone https://github.com/your-username/project-name.git`
-2. Install the dependencies: `npm install`
-3. Start the development server: `npm start`
-4. Access the application on `http://localhost:3000`
-
-## Contributing
-
-Contributions to the project are welcome! If you have any ideas, suggestions, or improvements, please feel free to open an issue or submit a pull request.
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
 
 
 
