@@ -1,6 +1,6 @@
 # Blockchain-Based Secure Framework for Smart City Applications
 
-![Project Banner](project-banner.png)
+
 
 ## Project Overview
 The Blockchain-Based Secure Framework for Smart City Applications is a comprehensive platform designed to provide secure and efficient functionality for smart city applications. It incorporates a consortium blockchain, multiple layers of security, and modern technologies to ensure data integrity, confidentiality, and authenticity within the smart city ecosystem.
